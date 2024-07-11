@@ -32,7 +32,6 @@ async function loadRanks () {
         await _sheets[_team].loadCells('A2:Z50')
     }
     console.log('Success to load sheets')
-
     const _persons = [  ]
     for(let _team = 1; _team <= 20; _team ++) {
         for(let _row = 2; _row <= 45; _row ++) {
