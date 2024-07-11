@@ -22,7 +22,7 @@ async function loadRanks () {
         scopes: [ 'https://www.googleapis.com/auth/spreadsheets' ]
     })
 
-    const _document = new GoogleSpreadsheet('1f59edvWixPHaC4ZSk3NSr1U9iOyLIFqthM1ZxOgG9z0', _serviceAccountAuth)
+    const _document = new GoogleSpreadsheet('1gEDBttgr31fJyztkUbOLDrLeldJUDyhn_EPJz53T164', _serviceAccountAuth)
 
     await _document.loadInfo()
 
@@ -43,12 +43,38 @@ async function loadRanks () {
                 schoolName: _sheets[_team].getCellByA1(`D${ _row }`).value,
                 name: _sheets[_team].getCellByA1(`E${ _row }`).value,
                 gender: _sheets[_team].getCellByA1(`F${ _row }`).value,
-                run: _sheets[_team].getCellByA1(`H${ _row }`).value,
-                jump: _sheets[_team].getCellByA1(`K${ _row }`).value,
-                longJump: _sheets[_team].getCellByA1(`N${ _row }`).value,
-                sitUp: _sheets[_team].getCellByA1(`P${ _row }`).value,
-                flex: _sheets[_team].getCellByA1(`S${ _row }`).value,
-                belly: _sheets[_team].getCellByA1(`V${ _row }`).value,
+                run: {
+                    score: _sheets[_team].getCellByA1(`H${ _row }`).value,
+                    value: _sheets[_team].getCellByA1(`G${ _row }`).value
+                },
+                jump: {
+                    score: _sheets[_team].getCellByA1(`L${ _row }`).value,
+                    value: _sheets[_team].getCellByA1(`K${ _row }`).value,
+                    firstValue: _sheets[_team].getCellByA1(`I${ _row }`).value,
+                    secondValue: _sheets[_team].getCellByA1(`J${ _row }`).value,
+                },
+                longJump: {
+                    score: _sheets[_team].getCellByA1(`P${ _row }`).value,
+                    value: _sheets[_team].getCellByA1(`O${ _row }`).value,
+                    firstValue: _sheets[_team].getCellByA1(`M${ _row }`).value,
+                    secondValue: _sheets[_team].getCellByA1(`N${ _row }`).value,
+                },
+                sitUp: {
+                    score: _sheets[_team].getCellByA1(`R${ _row }`).value,
+                    value: _sheets[_team].getCellByA1(`Q${ _row }`).value,
+                },
+                flex: {
+                    score: _sheets[_team].getCellByA1(`V${ _row }`).value,
+                    value: _sheets[_team].getCellByA1(`U${ _row }`).value,
+                    firstValue: _sheets[_team].getCellByA1(`S${ _row }`).value,
+                    secondValue: _sheets[_team].getCellByA1(`T${ _row }`).value,
+                },
+                belly: {
+                    score: _sheets[_team].getCellByA1(`Z${ _row }`).value,
+                    value: _sheets[_team].getCellByA1(`Y${ _row }`).value,
+                    firstValue: _sheets[_team].getCellByA1(`W${ _row }`).value,
+                    secondValue: _sheets[_team].getCellByA1(`X${ _row }`).value,
+                },
                 total: _sheets[_team].getCellByA1(`W${ _row }`).value,
             })
         }
@@ -60,22 +86,22 @@ async function loadRanks () {
             return a.total - b.total
         }).reverse(),
         run: _persons.filter(_person => _person.gender == '남').sort((a, b) => {
-            return a.run - b.run
+            return a.run.score - b.run.score
         }).reverse(),
         jump: _persons.filter(_person => _person.gender == '남').sort((a, b) => {
-            return a.jump - b.jump
+            return a.jump.score - b.jump.score
         }).reverse(),
         longJump: _persons.filter(_person => _person.gender == '남').sort((a, b) => {
-            return a.longJump - b.longJump
+            return a.longJump.score - b.longJump.score
         }).reverse(),
         sitUp: _persons.filter(_person => _person.gender == '남').sort((a, b) => {
-            return a.sitUp - b.sitUp
+            return a.sitUp.score - b.sitUp.score
         }).reverse(),
         flex: _persons.filter(_person => _person.gender == '남').sort((a, b) => {
-            return a.flex - b.flex
+            return a.flex.score - b.flex.score
         }).reverse(),
         belly: _persons.filter(_person => _person.gender == '남').sort((a, b) => {
-            return a.belly - b.belly
+            return a.belly.score - b.belly.score
         }).reverse()
     }
 
@@ -84,22 +110,22 @@ async function loadRanks () {
             return a.total - b.total
         }).reverse(),
         run: _persons.filter(_person => _person.gender == '여').sort((a, b) => {
-            return a.run - b.run
+            return a.run.score - b.run.score
         }).reverse(),
         jump: _persons.filter(_person => _person.gender == '여').sort((a, b) => {
-            return a.jump - b.jump
+            return a.jump.score - b.jump.score
         }).reverse(),
         longJump: _persons.filter(_person => _person.gender == '여').sort((a, b) => {
-            return a.longJump - b.longJump
+            return a.longJump.score - b.longJump.score
         }).reverse(),
         sitUp: _persons.filter(_person => _person.gender == '여').sort((a, b) => {
-            return a.sitUp - b.sitUp
+            return a.sitUp.score - b.sitUp.score
         }).reverse(),
         flex: _persons.filter(_person => _person.gender == '여').sort((a, b) => {
-            return a.flex - b.flex
+            return a.flex.score - b.flex.score
         }).reverse(),
         belly: _persons.filter(_person => _person.gender == '여').sort((a, b) => {
-            return a.belly - b.belly
+            return a.belly.score - b.belly.score
         }).reverse()
     }
     console.log('Complete all process')
