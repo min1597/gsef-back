@@ -1,0 +1,74 @@
+network:
+    version: 2
+    tunnels:
+        gre_kr0:
+            mode: gre
+            remote: 158.247.232.81
+            local: 205.185.127.197
+            addresses:
+                - "10.0.1.82/16"
+            routes:
+                - to: "45.8.93.0/24"
+                  via: "10.0.82.1"
+                - to: "160.20.142.0/24"
+                  via: "10.0.82.1"
+                - to: "94.154.161.0/24"
+                  via: "10.0.82.1"
+                - to: "45.151.90.0/24"
+                  via: "10.0.82.1"
+
+
+
+router id 205.185.127.197;
+
+protocol static announcement {
+    import all;
+    route 45.8.93.0/24 reject;
+    route 160.20.142.0/24 reject;
+    route 94.154.161.0/24 reject;
+    route 45.151.90.0/24 reject;
+}
+
+protocol direct {
+    interface "gre*";
+    import all;
+}
+
+protocol bgp frantech_v4_transit {
+    local as 152878;
+    source address 205.185.127.197;
+    import all;
+    export filter {
+            if proto ="announcement" then accept;
+            reject;
+    };
+    graceful restart on;
+    neighbor 169.254.169.179 as 53667;
+    password "FmDjSStT";
+    multihop 2;
+}
+
+protocol device {
+    scan time 10;
+    export all;
+}
+
+network:
+    version: 2
+    tunnels:
+        gre_kr0:
+            mode: gre
+            remote: 158.247.232.81
+            local: 205.185.127.197
+            addresses:
+                - "10.0.1.82/16"
+            routes:
+                - to: "45.8.93.0/24"
+                  via: "10.0.82.1"
+                - to: "160.20.142.0/24"
+                  via: "10.0.82.1"
+                - to: "94.154.161.0/24"
+                  via: "10.0.82.1"
+                - to: "45.151.90.0/24"
+                  via: "10.0.82.1"
+            mtu: 1400
