@@ -75,7 +75,7 @@ async function loadRanks () {
                     firstValue: _sheets[_team].getCellByA1(`W${ _row }`).value,
                     secondValue: _sheets[_team].getCellByA1(`X${ _row }`).value,
                 },
-                total: _sheets[_team].getCellByA1(`W${ _row }`).value,
+                total: _sheets[_team].getCellByA1(`AA${ _row }`).value,
             })
         }
     }
