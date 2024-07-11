@@ -29,53 +29,53 @@ async function loadRanks () {
     const _sheets = {}
     for(let _team = 1; _team <= 20; _team ++) {
         _sheets[_team] = _document.sheetsByTitle[`${ _team }조`]
-        await _sheets[_team].loadCells('A2:Z50')
+        await _sheets[_team].loadCells('A2:AA50')
     }
     console.log('Success to load sheets')
     const _persons = [  ]
     for(let _team = 1; _team <= 20; _team ++) {
         for(let _row = 2; _row <= 45; _row ++) {
             _persons.push({
-                totalNumber: _sheets[_team].getCellByA1(`A${ _row }`).value,
-                teamNumber: _sheets[_team].getCellByA1(`B${ _row }`).value,
+                totalNumber: Number(_sheets[_team].getCellByA1(`A${ _row }`).value),
+                teamNumber: Number(_sheets[_team].getCellByA1(`B${ _row }`).value),
                 grade: _sheets[_team].getCellByA1(`C${ _row }`).value,
                 team: _team,
                 schoolName: _sheets[_team].getCellByA1(`D${ _row }`).value,
                 name: _sheets[_team].getCellByA1(`E${ _row }`).value,
                 gender: _sheets[_team].getCellByA1(`F${ _row }`).value,
                 run: {
-                    score: _sheets[_team].getCellByA1(`H${ _row }`).value,
-                    value: _sheets[_team].getCellByA1(`G${ _row }`).value
+                    score: Number(_sheets[_team].getCellByA1(`H${ _row }`).value),
+                    value: Number(_sheets[_team].getCellByA1(`G${ _row }`).value)
                 },
                 jump: {
-                    score: _sheets[_team].getCellByA1(`L${ _row }`).value,
-                    value: _sheets[_team].getCellByA1(`K${ _row }`).value,
-                    firstValue: _sheets[_team].getCellByA1(`I${ _row }`).value,
-                    secondValue: _sheets[_team].getCellByA1(`J${ _row }`).value,
+                    score: Number(_sheets[_team].getCellByA1(`L${ _row }`).value),
+                    value: Number(_sheets[_team].getCellByA1(`K${ _row }`).value),
+                    firstValue: Number(_sheets[_team].getCellByA1(`I${ _row }`).value),
+                    secondValue: Number(_sheets[_team].getCellByA1(`J${ _row }`).value),
                 },
                 longJump: {
-                    score: _sheets[_team].getCellByA1(`P${ _row }`).value,
-                    value: _sheets[_team].getCellByA1(`O${ _row }`).value,
-                    firstValue: _sheets[_team].getCellByA1(`M${ _row }`).value,
-                    secondValue: _sheets[_team].getCellByA1(`N${ _row }`).value,
+                    score: Number(_sheets[_team].getCellByA1(`P${ _row }`).value),
+                    value: Number(_sheets[_team].getCellByA1(`O${ _row }`).value),
+                    firstValue: Number(_sheets[_team].getCellByA1(`M${ _row }`).value),
+                    secondValue: Number(_sheets[_team].getCellByA1(`N${ _row }`).value),
                 },
                 sitUp: {
-                    score: _sheets[_team].getCellByA1(`R${ _row }`).value,
-                    value: _sheets[_team].getCellByA1(`Q${ _row }`).value,
+                    score: Number(_sheets[_team].getCellByA1(`R${ _row }`).value),
+                    value: Number(_sheets[_team].getCellByA1(`Q${ _row }`).value),
                 },
                 flex: {
-                    score: _sheets[_team].getCellByA1(`V${ _row }`).value,
-                    value: _sheets[_team].getCellByA1(`U${ _row }`).value,
-                    firstValue: _sheets[_team].getCellByA1(`S${ _row }`).value,
-                    secondValue: _sheets[_team].getCellByA1(`T${ _row }`).value,
+                    score: Number(_sheets[_team].getCellByA1(`V${ _row }`).value),
+                    value: Number(_sheets[_team].getCellByA1(`U${ _row }`).value),
+                    firstValue: Number(_sheets[_team].getCellByA1(`S${ _row }`).value),
+                    secondValue: Number(_sheets[_team].getCellByA1(`T${ _row }`).value),
                 },
                 belly: {
-                    score: _sheets[_team].getCellByA1(`Z${ _row }`).value,
-                    value: _sheets[_team].getCellByA1(`Y${ _row }`).value,
-                    firstValue: _sheets[_team].getCellByA1(`W${ _row }`).value,
-                    secondValue: _sheets[_team].getCellByA1(`X${ _row }`).value,
+                    score: Number(_sheets[_team].getCellByA1(`Z${ _row }`).value),
+                    value: Number(_sheets[_team].getCellByA1(`Y${ _row }`).value),
+                    firstValue: Number(_sheets[_team].getCellByA1(`W${ _row }`).value),
+                    secondValue: Number(_sheets[_team].getCellByA1(`X${ _row }`).value),
                 },
-                total: _sheets[_team].getCellByA1(`AA${ _row }`).value,
+                total: Number(_sheets[_team].getCellByA1(`AA${ _row }`).value),
             })
         }
     }
