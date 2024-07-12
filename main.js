@@ -86,22 +86,22 @@ async function loadRanks () {
             return a.total - b.total
         }).reverse(),
         run: _persons.filter(_person => _person.gender == '남').sort((a, b) => {
-            return a.run.score - b.run.score
+            return a.run.value - b.run.value
         }).reverse(),
         jump: _persons.filter(_person => _person.gender == '남').sort((a, b) => {
-            return a.jump.score - b.jump.score
+            return a.jump.value - b.jump.value
         }).reverse(),
         longJump: _persons.filter(_person => _person.gender == '남').sort((a, b) => {
-            return a.longJump.score - b.longJump.score
+            return a.longJump.value - b.longJump.value
         }).reverse(),
         sitUp: _persons.filter(_person => _person.gender == '남').sort((a, b) => {
-            return a.sitUp.score - b.sitUp.score
+            return a.sitUp.value - b.sitUp.value
         }).reverse(),
         flex: _persons.filter(_person => _person.gender == '남').sort((a, b) => {
-            return a.flex.score - b.flex.score
+            return a.flex.value - b.flex.value
         }).reverse(),
         belly: _persons.filter(_person => _person.gender == '남').sort((a, b) => {
-            return a.belly.score - b.belly.score
+            return a.belly.value - b.belly.value
         }).reverse()
     }
 
@@ -110,27 +110,26 @@ async function loadRanks () {
             return a.total - b.total
         }).reverse(),
         run: _persons.filter(_person => _person.gender == '여').sort((a, b) => {
-            return a.run.score - b.run.score
+            return a.run.value - b.run.value
         }).reverse(),
         jump: _persons.filter(_person => _person.gender == '여').sort((a, b) => {
-            return a.jump.score - b.jump.score
+            return a.jump.value - b.jump.value
         }).reverse(),
         longJump: _persons.filter(_person => _person.gender == '여').sort((a, b) => {
-            return a.longJump.score - b.longJump.score
+            return a.longJump.value - b.longJump.value
         }).reverse(),
         sitUp: _persons.filter(_person => _person.gender == '여').sort((a, b) => {
-            return a.sitUp.score - b.sitUp.score
+            return a.sitUp.value - b.sitUp.value
         }).reverse(),
         flex: _persons.filter(_person => _person.gender == '여').sort((a, b) => {
-            return a.flex.score - b.flex.score
+            return a.flex.value - b.flex.value
         }).reverse(),
         belly: _persons.filter(_person => _person.gender == '여').sort((a, b) => {
-            return a.belly.score - b.belly.score
+            return a.belly.value - b.belly.value
         }).reverse()
     }
     console.log('Complete all process')
     ranks = _tempRank
-    console.log(JSON.stringify(ranks))
 }
 
 app.get('/total', (_req, _res) => {
